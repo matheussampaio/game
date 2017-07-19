@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use(bodyParser.json());
-app.use(express.static(path.resolve('public')));
+app.use(express.static(path.resolve('app')));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -21,13 +21,15 @@ app.use(methodOverride());
 app.use(errorhandler());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve('public/index.html'));
+    res.sendFile(path.resolve('app/index.html'));
 });
 
 const server = http.Server(app);
 const io = require('socket.io')(server);
 
 server.listen(process.env.PORT || 3000);
+
+console.log('listening on port 3000');
 
 let id = 0;
 
