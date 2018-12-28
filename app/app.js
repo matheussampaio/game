@@ -1,11 +1,9 @@
-let game;
+import Phaser from 'phaser'
 
-window.onload = function () {
-    game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'game');
+window.game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'game')
 
-    game.state.add('boot', Boot);
-    game.state.add('preload', Preload);
-    game.state.add('game', Game);
+  // game.state.add('boot', Boot)
+  // game.state.add('preload', Preload)
+  // game.state.add('game', Game)
 
-    game.state.start('boot');
-};
+  // game.state.start('boot')

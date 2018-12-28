@@ -1,9 +1,9 @@
 class Boot {
-    create() {
-        console.log('Boot::create::begin');
+  create() {
+    console.log('Boot::create::begin')
 
-        this.game.state.start('preload');
+    this.game.state.start('preload')
 
-        console.log('Boot::create::end');
-    }
+    console.log('Boot::create::end')
+  }
 }

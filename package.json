@@ -2,23 +2,63 @@
   "name": "game",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
+    "test": "LOG_LEVEL=fatal nyc ava --serial",
+    "test:watch": "LOG_LEVEL=fatal ava --watch --serial",
     "start": "node server/server.js",
-    "debug": "nodemon server/server.js"
+    "debug": "nodemon server/server.js",
+    "lint": "eslint --ext js app server",
+    "lint:fix": "eslint --ext js app server --fix"
   },
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://github.com/matheussampaio/game#readme",
+  "bugs": {
+    "url": "https://github.com/matheussampaio/game/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wizeline/lanterna-cli.git"
+  },
+  "license": "MIT",
+  "author": "Matheus Sampaio <matheus@sampaio.us>",
   "dependencies": {
-    "body-parser": "1.17.2",
-    "debug": "2.6.8",
+    "body-parser": "1.18.3",
+    "debug": "4.1.1",
     "errorhandler": "1.5.0",
-    "express": "4.15.3",
-    "method-override": "2.3.9",
-    "morgan": "1.8.2",
-    "socket.io": "2.0.3"
+    "express": "4.16.4",
+    "method-override": "3.0.0",
+    "morgan": "1.9.1",
+    "phaser": "3.15.1",
+    "pino": "5.10.5",
+    "pino-pretty": "2.5.0",
+    "socket.io": "2.2.0"
   },
   "devDependencies": {
-    "nodemon": "1.11.0"
+    "@babel/core": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "7.2.3",
+    "@babel/plugin-proposal-decorators": "7.2.3",
+    "@babel/preset-env": "7.2.3",
+    "ava": "1.0.1",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.4",
+    "eslint": "5.9.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "html-webpack-plugin": "3.2.0",
+    "husky": "1.2.0",
+    "nodemon": "1.18.9",
+    "nyc": "13.1.0",
+    "sinon": "7.1.1",
+    "webpack": "4.28.2",
+    "webpack-cli": "3.1.2"
+  },
+  "engines": {
+    "node": "^10.13.0",
+    "npm": "^6.4.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm test"
+    }
   }
 }
