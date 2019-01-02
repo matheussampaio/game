@@ -16,7 +16,8 @@
   "rules": {
     "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
-    "no-param-reassign": ["off"]
+    "no-param-reassign": ["off"],
+    "import/no-unresolved": ["off"]
   },
   "globals": {
     "Phraser": true

@@ -7,7 +7,9 @@ services:
       args:
         - NODE_ENV=${NODE_ENV-development}
     ports:
-      - "8080:8080"
+      - "8080:8080" # Application Port
+      - "3000:3000" # Browser Sync Proxy
+      - "3001:3001" # Browser Sync Server
     tty: true
     environment:
       - NODE_ENV=${NODE_ENV-development}
