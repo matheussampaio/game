@@ -6,10 +6,9 @@ services:
       context: .
       args:
         - NODE_ENV=${NODE_ENV-development}
+    command: npx parcel -p 8080 src/index.html
     ports:
       - "8080:8080" # Application Port
-      - "3000:3000" # Browser Sync Proxy
-      - "3001:3001" # Browser Sync Server
     tty: true
     environment:
       - NODE_ENV=${NODE_ENV-development}

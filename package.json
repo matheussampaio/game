@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
+  "browser": "src/index.html",
   "scripts": {
     "test": "LOG_LEVEL=fatal nyc ava --serial",
     "test:watch": "LOG_LEVEL=fatal ava --watch --serial",
@@ -40,20 +41,14 @@
     "@babel/preset-env": "7.2.3",
     "ava": "1.0.1",
     "babel-eslint": "10.0.1",
-    "babel-loader": "8.0.4",
-    "browser-sync": "2.26.3",
-    "browser-sync-webpack-plugin": "2.2.2",
     "eslint": "5.9.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
-    "file-loader": "3.0.1",
-    "html-webpack-plugin": "3.2.0",
     "husky": "1.2.0",
-    "nodemon": "1.18.9",
     "nyc": "13.1.0",
-    "sinon": "7.1.1",
-    "webpack": "4.28.2",
-    "webpack-cli": "3.1.2"
+    "parcel-bundler": "1.11.0",
+    "sass": "1.15.2",
+    "sinon": "7.1.1"
   },
   "engines": {
     "node": "^10.13.0",

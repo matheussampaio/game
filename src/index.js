@@ -3,6 +3,8 @@ import Phaser from 'phaser'
 import GameScene from './scenes/game'
 import DebugScene from './scenes/debug'
 
+import './index.scss'
+
 window.onload = () => {
   window.Phaser = Phaser
 
