@@ -29,8 +29,6 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride())
 app.use(errorhandler())
 
-app.use('/colyseus', monitor(gameServer))
-
 app.get('/', (req, res) => {
   res.sendFile(path.resolve('dist/index.html'))
 })
@@ -38,6 +36,8 @@ app.get('/', (req, res) => {
 const port = Number(process.env.PORT || 8080)
 
 gameServer.register('battle', BattleRoom)
+
+app.use('/colyseus', monitor(gameServer))
 
 gameServer.listen(port)
 
