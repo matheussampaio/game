@@ -6,9 +6,10 @@ services:
       context: .
       args:
         - NODE_ENV=${NODE_ENV-development}
-    command: npx parcel -p 8080 src/index.html
+    command: npx parcel -p 8080 --no-hmr src/index.html
     ports:
       - "8080:8080" # Application Port
+      # - "8081:8081" # Hot Reload Module
     tty: true
     environment:
       - NODE_ENV=${NODE_ENV-development}

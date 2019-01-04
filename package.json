@@ -7,8 +7,8 @@
   "scripts": {
     "test": "LOG_LEVEL=fatal nyc ava --serial",
     "test:watch": "LOG_LEVEL=fatal ava --watch --serial",
+    "dev": "nodemon --watch 'server/**/*.ts' --exec ts-node server/server.ts",
     "start": "node server/server.js",
-    "debug": "nodemon server/server.js",
     "lint": "eslint --ext js app server",
     "lint:fix": "eslint --ext js app server --fix"
   },
@@ -23,7 +23,10 @@
   "license": "MIT",
   "author": "Matheus Sampaio <matheus@sampaio.us>",
   "dependencies": {
+    "@colyseus/monitor": "0.1.10",
     "body-parser": "1.18.3",
+    "colyseus": "0.9.24",
+    "colyseus.js": "0.9.15",
     "debug": "4.1.1",
     "errorhandler": "1.5.0",
     "express": "4.16.4",
@@ -45,10 +48,13 @@
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "husky": "1.2.0",
+    "nodemon": "1.18.9",
     "nyc": "13.1.0",
     "parcel-bundler": "1.11.0",
     "sass": "1.15.2",
-    "sinon": "7.1.1"
+    "sinon": "7.1.1",
+    "ts-node": "7.0.1",
+    "typescript": "3.2.2"
   },
   "engines": {
     "node": "^10.13.0",

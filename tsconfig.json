@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6"],
+    "target": "es6",
+    "declaration": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "sourceMap": false
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
