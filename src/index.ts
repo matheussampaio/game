@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 
+import FindGame from './scenes/find-game'
 import GameScene from './scenes/game'
 import DebugScene from './scenes/debug'
 
@@ -9,6 +10,7 @@ window.onload = () => {
   const config = {
     title: 'My Game',
     version: '0.0.0-alpha',
+    canvas: document.getElementById('game-container'),
     input: {
       keyboard: false,
       mouse: true,
@@ -19,6 +21,7 @@ window.onload = () => {
     width: 800,
     height: 500,
     scene: [
+      FindGame,
       GameScene,
       DebugScene
     ],
