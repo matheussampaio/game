@@ -2,15 +2,17 @@
   "name": "game",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "server/server.ts",
   "browser": "src/index.html",
   "scripts": {
     "test": "LOG_LEVEL=fatal nyc ava --serial",
     "test:watch": "LOG_LEVEL=fatal ava --watch --serial",
-    "dev": "nodemon --watch 'server/**/*.ts' --exec ts-node server/server.ts",
-    "start": "node server/server.js",
-    "lint": "eslint --ext js app server",
-    "lint:fix": "eslint --ext js app server --fix"
+    "build": "parcel src/index.html",
+    "build:watch": "parcel watch src/index.html",
+    "dev": "nodemon --ext js,ts --watch 'server/**/*.ts' --exec ts-node server/server.ts",
+    "start": "ts-node server/server.ts",
+    "lint": "eslint --ext js --ext ts app server",
+    "lint:fix": "eslint --ext js --ext ts app server --fix"
   },
   "homepage": "https://github.com/matheussampaio/game#readme",
   "bugs": {

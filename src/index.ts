@@ -16,8 +16,8 @@ window.onload = () => {
       gamepad: false
     },
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 800,
+    height: 500,
     scene: [
       GameScene,
       DebugScene
