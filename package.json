@@ -11,8 +11,8 @@
     "build:watch": "parcel watch client/index.html",
     "dev": "nodemon --ext js,ts --watch 'server/**/*.ts' --exec ts-node server/server.ts",
     "start": "ts-node server/server.ts",
-    "lint": "eslint --ext js --ext ts app server",
-    "lint:fix": "eslint --ext js --ext ts app server --fix"
+    "lint": "eslint --ext js --ext ts client server",
+    "lint:fix": "eslint --ext js --ext ts client server --fix"
   },
   "homepage": "https://github.com/matheussampaio/game#readme",
   "bugs": {
