@@ -5,8 +5,6 @@
   "main": "server/server.ts",
   "browser": "client/index.html",
   "scripts": {
-    "test": "LOG_LEVEL=fatal nyc ava --serial",
-    "test:watch": "LOG_LEVEL=fatal ava --watch --serial",
     "build": "parcel client/index.html",
     "build:watch": "parcel watch client/index.html",
     "dev": "nodemon --ext js,ts --watch 'server/**/*.ts' --exec ts-node server/server.ts",
@@ -33,38 +31,25 @@
     "debug": "4.1.1",
     "errorhandler": "1.5.1",
     "express": "4.17.1",
-    "jquery": "3.4.1",
-    "konva": "4.2.2",
     "method-override": "3.0.0",
     "morgan": "1.10.0",
-    "phaser": "3.22.0",
     "pino": "6.1.1",
-    "pino-pretty": "4.0.0",
-    "socket.io": "2.3.0"
+    "pino-pretty": "4.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-proposal-decorators": "7.8.3",
     "@babel/preset-env": "7.9.5",
-    "ava": "3.6.0",
-    "husky": "4.2.4",
     "nodemon": "2.0.3",
-    "nyc": "15.0.1",
     "parcel-bundler": "1.12.4",
     "sass": "1.26.3",
-    "sinon": "9.0.2",
     "standard": "14.3.3",
     "ts-node": "8.8.2",
     "typescript": "3.8.3"
   },
   "engines": {
-    "node": "^10.13.0",
+    "node": "^12.16.2",
     "npm": "^6.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run lint && npm test"
-    }
   }
 }

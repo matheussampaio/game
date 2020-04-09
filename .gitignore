@@ -2,6 +2,7 @@ node_modules/
 dist/
 coverage/
 .cache/
+.nyc_output/
 
 .DS_Store
 .env
