@@ -1,12 +1,19 @@
-import { Room, EntityMap, Client, nosync } from 'colyseus'
+import { Room, Client } from 'colyseus'
+import { Schema, type, MapSchema } from '@colyseus/schema'
 
 import logger from '../logger'
 
-export class State {
-  players: EntityMap<Player> = {}
+export class Player extends Schema {
+  @type('number')
+  x = Math.floor(Math.random() * 400)
 
-  @nosync
-  something = "this wont be sent to client-side"
+  @type('number')
+  y = Math.floor(Math.random() * 400)
+}
+
+export class State extends Schema {
+  @type({ map: Player })
+  players = new MapSchema<Player>()
 
   createPlayer(id: string) {
     this.players[id] = new Player()
@@ -25,16 +32,10 @@ export class State {
   }
 }
 
-export class Player {
-  x = Math.floor(Math.random() * 400)
-
-  y = Math.floor(Math.random() * 400)
-}
-
-export class BattleRoom extends Room {
+export class BattleRoom extends Room<State> {
   maxClients = 2
 
-  onInit(options: any) {
+  onCreate(options: any) {
     logger.info('BattleRoom created!', options)
 
     this.setState(new State())

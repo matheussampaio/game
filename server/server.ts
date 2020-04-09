@@ -1,10 +1,11 @@
-import * as http from 'http'
-import * as path from 'path'
-import * as morgan from 'morgan'
-import * as express from 'express'
-import * as bodyParser from 'body-parser'
-import * as errorhandler from 'errorhandler'
-import * as methodOverride from 'method-override'
+import { createServer } from 'http'
+import path from 'path'
+import morgan from 'morgan'
+import express from 'express'
+import bodyParser from 'body-parser'
+import errorhandler from 'errorhandler'
+import methodOverride from 'method-override'
+import cors from 'cors'
 import { Server } from 'colyseus'
 import { monitor } from '@colyseus/monitor'
 
@@ -13,14 +14,7 @@ import { BattleRoom } from './rooms/battle'
 
 const app = express()
 
-const gameServer = new Server({
-  server: http.createServer(app)
-})
-
-if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('dev'))
-}
-
+app.use(cors())
 app.use(bodyParser.json())
 app.use(express.static(path.resolve('dist')))
 app.use(bodyParser.urlencoded({
@@ -29,15 +23,31 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride())
 app.use(errorhandler())
 
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('dev'))
+}
+
 app.get('/', (req, res) => {
   res.sendFile(path.resolve('dist/index.html'))
 })
 
+const gameServer = new Server({
+  server: createServer(app),
+  express: app,
+  pingInterval: 0
+})
+
+gameServer.define('battle', BattleRoom)
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use('/colyseus', monitor())
+}
+
+gameServer.onShutdown(() => {
+  console.log('game server is going down.')
+})
+
 const port = Number(process.env.PORT || 8080)
-
-gameServer.register('battle', BattleRoom)
-
-app.use('/colyseus', monitor(gameServer))
 
 gameServer.listen(port)
 
