@@ -6,7 +6,7 @@ const client = new Colyseus.Client(getWebsocketURL())
 
 client.joinOrCreate('battle')
   .then((room) => {
-    console.log(room.sessionId, 'joined', room.name)
+    console.log(room.sessionId, 'joined', room.name, room.id)
 
     room.onStateChange.once((state) => {
       console.log('initial state', state)

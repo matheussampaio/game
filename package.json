@@ -11,8 +11,7 @@
     "build:watch": "parcel watch client/index.html",
     "dev": "nodemon --ext js,ts --watch 'server/**/*.ts' --exec ts-node server/server.ts",
     "start": "ts-node server/server.ts",
-    "lint": "eslint --ext js --ext ts client server",
-    "lint:fix": "eslint --ext js --ext ts client server --fix"
+    "lint": "standard"
   },
   "homepage": "https://github.com/matheussampaio/game#readme",
   "bugs": {
@@ -49,16 +48,13 @@
     "@babel/plugin-proposal-decorators": "7.8.3",
     "@babel/preset-env": "7.9.5",
     "ava": "3.6.0",
-    "babel-eslint": "10.1.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.1.0",
-    "eslint-plugin-import": "2.20.2",
     "husky": "4.2.4",
     "nodemon": "2.0.3",
     "nyc": "15.0.1",
     "parcel-bundler": "1.12.4",
     "sass": "1.26.3",
     "sinon": "9.0.2",
+    "standard": "14.3.3",
     "ts-node": "8.8.2",
     "typescript": "3.8.3"
   },

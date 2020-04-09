@@ -10,7 +10,7 @@ import { Server } from 'colyseus'
 import { monitor } from '@colyseus/monitor'
 
 import logger from './logger'
-import { BattleRoom } from './rooms/battle'
+import BattleRoom from './rooms/battle/room'
 
 const app = express()
 
