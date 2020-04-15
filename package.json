@@ -7,7 +7,7 @@
   "scripts": {
     "build": "parcel client/index.html",
     "build:watch": "parcel watch client/index.html",
-    "dev": "nodemon --ext js,ts --watch 'server/**/*.ts' --exec ts-node server/server.ts",
+    "dev": "nodemon --ext js,ts --watch server --exec ts-node server/server.ts",
     "start": "ts-node server/server.ts",
     "lint": "standard"
   },
@@ -28,19 +28,22 @@
     "colyseus": "0.12.6",
     "colyseus.js": "0.12.2",
     "cors": "2.8.5",
-    "debug": "4.1.1",
     "errorhandler": "1.5.1",
     "express": "4.17.1",
+    "matter-js": "../matter-js",
     "method-override": "3.0.0",
     "morgan": "1.10.0",
+    "phaser": "3.22.0",
     "pino": "6.1.1",
-    "pino-pretty": "4.0.0"
+    "pino-pretty": "4.0.0",
+    "poly-decomp": "0.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-proposal-decorators": "7.8.3",
     "@babel/preset-env": "7.9.5",
+    "@types/matter-js": "0.14.2",
     "@types/pino": "5.17.0",
     "nodemon": "2.0.3",
     "parcel-bundler": "1.12.4",
