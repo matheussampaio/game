@@ -8,28 +8,18 @@ import methodOverride from 'method-override'
 import cors from 'cors'
 import { Server } from 'colyseus'
 import { monitor } from '@colyseus/monitor'
+import Bundler from 'parcel-bundler'
 
 import logger from './logger'
 import BattleRoom from './rooms/battle/room'
 
 const app = express()
 
+app.use(morgan('dev'))
 app.use(cors())
-app.use(bodyParser.json())
-app.use(express.static(path.resolve('dist')))
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
-app.use(methodOverride())
 app.use(errorhandler())
 
-if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('dev'))
-}
-
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve('dist/index.html'))
-})
+app.use(new Bundler('client/index.html', { hrm: false }).middleware())
 
 const gameServer = new Server({
   server: createServer(app),

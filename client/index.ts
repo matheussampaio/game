@@ -1,48 +1,26 @@
-import * as Colyseus from 'colyseus.js'
-import Phaser from 'phaser'
+import Colyseus from 'colyseus.js'
 
-import { getWebsocketURL } from './utils'
+import Game from './game'
+import GameAPI from './game-api'
 
-let shape = null
-let graphics = null
+async function main() {
+  const api = new GameAPI()
+  const game = new Game()
 
-const config = {
-  type: Phaser.AUTO,
-  width: 1000,
-  height: 1000,
-  scene: {
-    create() {
-      graphics = this.add.graphics({
-        lineStyle: {
-          width: 3,
-          color: 0xff00ff
-        },
-        fillStyle: {
-          color: 0x00ff00
-        }
-      });
+  await api.connect('battle')
 
-      shape = new Phaser.Geom.Rectangle(100, 100, 20, 20)
-    }
+  api.room.state.onChange = (changes: Colyseus.DataChange[]) => {
+    changes.forEach((change: Colyseus.DataChange) => {
+      if (change.field === 'position') {
+        game.graphics.clear()
+
+        game.shape.x = change.value.x
+        game.shape.y = change.value.y
+
+        game.graphics.fillRectShape(game.shape);
+      }
+    })
   }
 }
 
-new Phaser.Game(config)
-
-const client = new Colyseus.Client(getWebsocketURL())
-
-client.joinOrCreate('battle')
-  .then((room: Colyseus.Room) => {
-    room.state.onChange = (changes: Colyseus.DataChange[]) => {
-      changes.forEach((change: Colyseus.DataChange) => {
-        if (change.field === 'position') {
-          graphics.clear()
-
-          shape.x = change.value.x
-          shape.y = change.value.y
-
-          graphics.fillRectShape(shape);
-        }
-      })
-    }
-  })
+main()

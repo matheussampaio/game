@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "lib": ["es6", "dom"],
-    "target": "es6",
+    "target": "ESNext",
     "declaration": true,
     "noImplicitAny": false,
     "experimentalDecorators": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "esModuleInterop": true
   },
   "include": [
