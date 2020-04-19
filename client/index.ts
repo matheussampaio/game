@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import Colyseus from 'colyseus.js'
 
 import Game from './game'
